@@ -1,16 +1,13 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.user.User;
-import com.example.demo.dto.user.UserCreateRequest;
-import com.example.demo.dto.user.UserResponse;
+import com.example.demo.dto.user.*;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@RestController
 public class UserController {
 
 //    private final List<User> users = new ArrayList<>();
@@ -42,5 +39,17 @@ public class UserController {
             int age = rs.getInt("age");
             return new UserResponse(id, name, age);
         });
+    }
+
+    @PutMapping("/user")
+    public void updateUser(@RequestBody UserUpdateRequest request) {
+        String sql = "update user set name = ? where id = ?";
+        jdbcTemplate.update(sql, request.getName(), request.getId());
+    }
+
+    @DeleteMapping("/user")
+    public void deleteUser(@RequestParam String name) {
+        String sql = "delete from user where name = ?";
+        jdbcTemplate.update(sql, name);
     }
 }
