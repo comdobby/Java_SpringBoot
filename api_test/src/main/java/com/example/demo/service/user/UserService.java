@@ -6,15 +6,18 @@ import com.example.demo.dto.user.UserResponse;
 import com.example.demo.dto.user.UserUpdateRequest;
 import com.example.demo.repository.user.UserRepository;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserService {
 
     private final UserRepository userRepository;
 
-    public UserService(JdbcTemplate jdbcTemplate) {
-        this.userRepository = new UserRepository(jdbcTemplate);
+    public UserService(UserRepository userRepository) {
+//        this.userRepository = new UserRepository(jdbcTemplate);
+        this.userRepository = userRepository;
     }
 
     public void saveUser(UserCreateRequest request) {

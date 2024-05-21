@@ -15,9 +15,10 @@ public class UserController {
 //    private final JdbcTemplate jdbcTemplate;
     private final UserService userService;
 
-    public UserController(JdbcTemplate jdbcTemplate) {
+    public UserController(UserService userService) {
 //        this.jdbcTemplate = jdbcTemplate;
-        this.userService = new UserService(jdbcTemplate);
+//        this.userService = new UserService(jdbcTemplate);
+        this.userService = userService;
     }
 
     @PostMapping("/user")
