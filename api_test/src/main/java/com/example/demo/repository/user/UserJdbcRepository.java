@@ -1,20 +1,18 @@
 package com.example.demo.repository.user;
 
-import com.example.demo.dto.user.User;
 import com.example.demo.dto.user.UserCreateRequest;
 import com.example.demo.dto.user.UserResponse;
 import com.example.demo.dto.user.UserUpdateRequest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Repository
-public class UserRepository {
+public class UserJdbcRepository {
     private final JdbcTemplate jdbcTemplate;
 
-    public UserRepository(JdbcTemplate jdbcTemplate) {
+    public UserJdbcRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

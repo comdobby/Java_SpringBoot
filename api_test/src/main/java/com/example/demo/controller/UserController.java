@@ -1,11 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.user.*;
-import com.example.demo.service.user.UserService;
-import org.springframework.jdbc.core.JdbcTemplate;
+import com.example.demo.service.user.UserServiceV1;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -13,9 +11,9 @@ public class UserController {
 
 //    private final List<User> users = new ArrayList<>();
 //    private final JdbcTemplate jdbcTemplate;
-    private final UserService userService;
+    private final UserServiceV1 userService;
 
-    public UserController(UserService userService) {
+    public UserController(UserServiceV1 userService) {
 //        this.jdbcTemplate = jdbcTemplate;
 //        this.userService = new UserService(jdbcTemplate);
         this.userService = userService;
